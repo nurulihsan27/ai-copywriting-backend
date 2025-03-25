@@ -3,6 +3,7 @@ import openai
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load API Keys
 load_dotenv()

@@ -10,7 +10,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 MIDTRANS_SERVER_KEY = os.getenv("MIDTRANS_SERVER_KEY")
 
 # Setup MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+MONGODB_URI = os.getenv("MONGODB_URI")
+client = MongoClient(MONGODB_URI)
 db = client["ai_copywriting"]
 users_collection = db["users"]
 

@@ -16,6 +16,11 @@ users_collection = db["users"]
 
 app = FastAPI()
 
+# ✅ Tambahkan endpoint root untuk menghindari error 404
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to AI Copywriting API"}
+
 @app.post("/generate/")
 async def generate_copywriting(user_id: str, nama_produk: str, deskripsi: str, manfaat: str, gaya_bahasa: str, platform: str, jenis_konten: str, keterangan: str = ""):
     user = users_collection.find_one({"user_id": user_id})

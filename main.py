@@ -17,6 +17,15 @@ users_collection = db["users"]
 
 app = FastAPI()
 
+# Middleware CORS untuk mengizinkan akses dari frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://ai-copywriting-frontend.vercel.app/"],  # Ganti "*" dengan URL frontend jika mau lebih aman
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],  # Bisa juga ["GET", "POST"]
+    allow_headers=["*"],
+)
+
 # ✅ Tambahkan endpoint root untuk menghindari error 404
 @app.get("/")
 def read_root():
